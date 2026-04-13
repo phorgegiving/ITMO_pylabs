@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Прочитанные книги</title>
+    <style>
+        body {
+            background: #ffffff;
+            font-family: Georgia, serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 { border-bottom: 1px solid #6c6c6c; padding-bottom: 10px; }
+        input { padding: 6px; margin-right: 8px; width: 200px; }
+        button { padding: 6px 14px; cursor: pointer; }
+        li { margin: 8px 0; }
+        .clear-btn { margin-top: 20px; color: red; border-color: red; background: rgb(255, 148, 148); }
+    </style>
+</head>
+<body>
+
+    <h1>Прочитанные книги</h1>
+
+    <form method="POST" action="/">
+        <input type="text" name="author" placeholder="Автор" required>
+        <input type="text" name="name" placeholder="Название" required>
+        <button type="submit">Добавить</button>
+    </form>
+
+    <ul>
+        {% for book in books %}
+        <li>{{ book.author }} от <em>{{ book.name }}</em></li>
+        {% else %}
+        <li>Список пуст!</li>
+        {% endfor %}
+    </ul>
+
+    <form method="POST" action="/clear">
+        <button class="clear-btn" type="submit">уничтожить дб</button>
+    </form>
+
+</body>
+</html>
